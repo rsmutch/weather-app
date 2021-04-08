@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '@material-ui/core/Input';
 // import magnifyingGlass from '../assets/magnifying_glass.png';
 
-const SearchBar = () => {
+const SearchBar = ({ getCurrentWeather }) => {
   const [query, setQuery] = useState('');
 
   const handleChange = ({ target }) => {
@@ -13,7 +13,10 @@ const SearchBar = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        setQuery('');
+        if (query) {
+          getCurrentWeather(query);
+          setQuery('');
+        }
       }}
     >
       <Input
@@ -21,7 +24,7 @@ const SearchBar = () => {
         placeholder="Change location"
         onChange={handleChange}
       />
-      <Input type="submit" value="Go" disableUnderline="true" />
+      <Input type="submit" value="Go" disableUnderline={true} />
     </form>
   );
 };

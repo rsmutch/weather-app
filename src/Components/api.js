@@ -1,1 +1,19 @@
-api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+import axios from 'axios';
+
+const weatherApi = axios.create({
+  baseURL: process.env.REACT_APP_API_URL
+});
+
+export const apiGetCurrentWeather = (location) => {
+  return weatherApi
+    .get('/weather', {
+      params: {
+        appid: process.env.REACT_APP_API_KEY,
+        q: location,
+        units: 'metric'
+      }
+    })
+    .then(({ data }) => {
+      return data;
+    });
+};
