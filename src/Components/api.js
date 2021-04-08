@@ -22,19 +22,15 @@ export const apiGetWeather = (location) => {
     }
   });
 
-  console.log('here');
-
   return axios.all([weather, daily]).then(
     axios.spread((...responses) => {
-      console.log('there');
       const { data } = responses[0];
       const { list } = responses[1].data;
       const currentData = convertWeatherData(data);
       const forecastData = list.map((item) => {
         return convertWeatherData(item);
       });
-      console.log(list);
-      console.log(forecastData);
+      return { currentData, forecastData };
     })
   );
 };

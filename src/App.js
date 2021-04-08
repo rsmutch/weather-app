@@ -5,13 +5,15 @@ import CurrentWeather from './Components/CurrentWeather';
 import SearchBar from './Components/SearchBar';
 
 const App = () => {
-  const [weatherData, setWeatherData] = useState({});
+  const [currentData, setCurrentData] = useState({});
+  const [forecastData, setForecastData] = useState({});
 
   const getWeather = (location) => {
     apiGetWeather(location)
       .then((res) => {
         console.log(res);
-        // setWeatherData(res);
+        setCurrentData(res.currentData);
+        setForecastData(res.forecastData);
       })
       .catch((err) => {
         console.log(err);
@@ -21,7 +23,7 @@ const App = () => {
   return (
     <div className="App">
       <SearchBar getWeather={getWeather} />
-      <CurrentWeather weatherData={weatherData} />
+      <CurrentWeather currentData={currentData} />
     </div>
   );
 };
