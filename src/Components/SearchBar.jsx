@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '@material-ui/core/Input';
 // import magnifyingGlass from '../assets/magnifying_glass.png';
 
-const SearchBar = ({ getCurrentWeather }) => {
+const SearchBar = ({ getWeather }) => {
   const [query, setQuery] = useState('');
 
   const handleChange = ({ target }) => {
@@ -14,7 +14,7 @@ const SearchBar = ({ getCurrentWeather }) => {
       onSubmit={(e) => {
         e.preventDefault();
         if (query) {
-          getCurrentWeather(query);
+          getWeather(query);
           setQuery('');
         }
       }}

@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import './App.css';
-import { apiGetCurrentWeather } from './Components/api';
+import { apiGetWeather } from './Components/api';
 import CurrentWeather from './Components/CurrentWeather';
 import SearchBar from './Components/SearchBar';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState({});
 
-  const getCurrentWeather = (location) => {
-    apiGetCurrentWeather(location)
+  const getWeather = (location) => {
+    apiGetWeather(location)
       .then((res) => {
         console.log(res);
-        setWeatherData(res);
+        // setWeatherData(res);
       })
       .catch((err) => {
         console.log(err);
@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <SearchBar getCurrentWeather={getCurrentWeather} />
+      <SearchBar getWeather={getWeather} />
       <CurrentWeather weatherData={weatherData} />
     </div>
   );
