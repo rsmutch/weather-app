@@ -1,7 +1,4 @@
 import React from 'react';
-import { ReactSVG } from 'react-svg';
-import Sunrise from '../assets/sunrise.svg';
-import Sunset from '../assets/sunset.svg';
 
 const CurrentWeather = ({ currentData }) => {
   if (Object.keys(currentData).length === 0) {
@@ -22,10 +19,10 @@ const CurrentWeather = ({ currentData }) => {
   return (
     <div className="current-data-container">
       <p className="current-data-date">{date}</p>
-      <p className="current-data-location">
+      <h2 className="current-data-location">
         {city}, {country}
         <hr className="hr-gradient" />
-      </p>
+      </h2>
       <img
         className="current-data-icon"
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}

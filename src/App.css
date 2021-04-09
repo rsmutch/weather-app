@@ -1,5 +1,6 @@
 :root {
   --grey: rgb(85, 85, 85);
+  --container: rgba(255, 255, 255, 0.3);
 }
 
 * {
@@ -36,10 +37,11 @@ header h1 {
 }
 
 .current-data-container {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--container);
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+  margin-bottom: 10px;
   width: 80vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -50,7 +52,7 @@ header h1 {
     'sunrise wind';
 }
 
-.current-data-container p {
+.current-data-container * {
   color: var(--grey);
 }
 
@@ -111,4 +113,60 @@ header h1 {
     rgba(83, 83, 83, 0.35),
     rgba(0, 0, 0, 0)
   );
+}
+
+.forecast-container {
+  background-color: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80vw;
+}
+
+.forecast-card-container {
+  display: grid;
+  grid-template-areas:
+    'date icon'
+    'temp sunrise'
+    'wind sunset';
+}
+
+.forecast-container * {
+  color: var(--grey);
+  margin-top: 0;
+  align-self: center;
+}
+
+.forecast-title {
+  grid-area: location;
+  font-size: larger;
+  margin-bottom: 0;
+  padding-top: 7px;
+}
+
+.forecast-card-date {
+  grid-area: date;
+}
+
+.forecast-card-temp {
+  grid-area: temp;
+}
+
+.forecast-card-icon {
+  grid-area: icon;
+  justify-self: center;
+  height: 80px;
+}
+
+.forecast-card-sunrise {
+  grid-area: sunrise;
+}
+
+.forecast-card-sunset {
+  grid-area: sunset;
+}
+
+.forecast-card-wind {
+  grid-area: wind;
 }

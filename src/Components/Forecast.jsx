@@ -7,7 +7,11 @@ const Forecast = ({ forecastData }) => {
   }
   console.log(forecastData);
   return (
-    <div>
+    <div className="forecast-container">
+      <p className="forecast-title">
+        Forecast
+        <hr className="hr-gradient" />
+      </p>
       {forecastData.map((day) => {
         return <ForecastCard day={day} />;
       })}
