@@ -79,7 +79,7 @@ describe('convertWeatherData()', () => {
       temp: '8.6',
       windSpeed: '20'
     };
-    const actualOutput = convertWeatherData(input);
+    const actualOutput = convertWeatherData(input, false);
     expect(actualOutput).toEqual(expectedOutput);
   });
 });

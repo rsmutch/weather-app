@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { apiGetWeather } from './Components/api';
 import CurrentWeather from './Components/CurrentWeather';
+import Forecast from './Components/Forecast';
 import SearchBar from './Components/SearchBar';
 
 const App = () => {
@@ -11,7 +12,6 @@ const App = () => {
   const getWeather = (location) => {
     apiGetWeather(location)
       .then((res) => {
-        console.log(res);
         setCurrentData(res.currentData);
         setForecastData(res.forecastData);
       })
@@ -24,6 +24,7 @@ const App = () => {
     <div className="App">
       <SearchBar getWeather={getWeather} />
       <CurrentWeather currentData={currentData} />
+      <Forecast forecastData={forecastData} />
     </div>
   );
 };

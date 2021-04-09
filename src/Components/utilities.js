@@ -38,18 +38,32 @@ export const convertDate = (d) => {
   return dateString;
 };
 
-export const convertWeatherData = (data) => {
-  const weatherData = {
+export const convertWeatherData = (data, isForecast) => {
+  let weatherData = {
     date: convertDate(data.dt),
-    city: data.name,
-    country: data.sys.country,
-    temp: data.main.temp.toFixed(1),
-    feelsLike: data.main.feels_like.toFixed(1),
-    windSpeed: (data.wind.speed * 2.237).toFixed(0),
-    sunrise: convertUnixTime(data.sys.sunrise),
-    sunset: convertUnixTime(data.sys.sunset),
     icon: data.weather[0].icon,
     description: data.weather[0].description
   };
+  if (!isForecast) {
+    weatherData = {
+      ...weatherData,
+      country: data.sys.country,
+      temp: data.main.temp.toFixed(1),
+      sunrise: convertUnixTime(data.sys.sunrise),
+      sunset: convertUnixTime(data.sys.sunset),
+      feelsLike: data.main.feels_like.toFixed(1),
+      windSpeed: (data.wind.speed * 2.237).toFixed(0),
+      city: data.name
+    };
+  } else {
+    weatherData = {
+      ...weatherData,
+      sunrise: convertUnixTime(data.sunrise),
+      sunset: convertUnixTime(data.sunset),
+      feelsLike: data.feels_like.day.toFixed(1),
+      temp: data.temp.day.toFixed(1),
+      windSpeed: (data.wind_speed * 2.237).toFixed(0)
+    };
+  }
   return weatherData;
 };

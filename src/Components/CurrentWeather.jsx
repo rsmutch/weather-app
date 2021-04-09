@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CurrentWeather = ({ currentData }) => {
-  console.log(currentData);
   if (Object.keys(currentData).length === 0) {
     return null;
   }

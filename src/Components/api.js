@@ -6,31 +6,32 @@ const weatherApi = axios.create({
 });
 
 export const apiGetWeather = (location) => {
-  const weather = weatherApi.get('/weather', {
-    params: {
-      appid: process.env.REACT_APP_API_KEY,
-      q: location,
-      units: 'metric'
-    }
-  });
-
-  const daily = weatherApi.get('/forecast', {
-    params: {
-      appid: process.env.REACT_APP_API_KEY,
-      q: location,
-      units: 'metric'
-    }
-  });
-
-  return axios.all([weather, daily]).then(
-    axios.spread((...responses) => {
-      const { data } = responses[0];
-      const { list } = responses[1].data;
-      const currentData = convertWeatherData(data);
-      const forecastData = list.map((item) => {
-        return convertWeatherData(item);
-      });
-      return { currentData, forecastData };
+  let currentData = {};
+  return weatherApi
+    .get('/weather', {
+      params: {
+        appid: process.env.REACT_APP_API_KEY,
+        q: location,
+        units: 'metric'
+      }
     })
-  );
+    .then(({ data }) => {
+      currentData = convertWeatherData(data, false);
+      const { lat, lon } = data.coord;
+      return weatherApi
+        .get('/onecall', {
+          params: {
+            appid: process.env.REACT_APP_API_KEY,
+            lat: lat,
+            lon: lon,
+            units: 'metric'
+          }
+        })
+        .then(({ data }) => {
+          const forecastData = data.daily.map((item) => {
+            return convertWeatherData(item, true);
+          });
+          return { currentData, forecastData };
+        });
+    });
 };
