@@ -3,6 +3,7 @@ import './App.css';
 import { apiGetWeather } from './Components/api';
 import CurrentWeather from './Components/CurrentWeather';
 import Forecast from './Components/Forecast';
+import Header from './Components/Header';
 import SearchBar from './Components/SearchBar';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <SearchBar getWeather={getWeather} />
       <CurrentWeather currentData={currentData} />
       <Forecast forecastData={forecastData} />
