@@ -1,3 +1,17 @@
+:root {
+  --grey: rgb(85, 85, 85);
+}
+
+* {
+  font-family: 'Helvetica';
+}
+body {
+  background-image: url('./assets/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .App {
   text-align: center;
 }
@@ -16,7 +30,85 @@ header {
 }
 
 header h1 {
-  font-family: 'Helvetica';
   font-weight: lighter;
-  color: rgb(85, 85, 85);
+  color: var(--grey);
+  cursor: pointer;
+}
+
+.current-data-container {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'location location'
+    'date date'
+    'icon temp'
+    'sunrise wind';
+}
+
+.current-data-container p {
+  color: var(--grey);
+}
+
+.current-data-location {
+  grid-area: location;
+  font-size: larger;
+  margin-bottom: 0;
+}
+
+.current-data-date {
+  grid-area: date;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.current-data-icon {
+  grid-area: icon;
+  min-height: 11rem;
+  margin: 0 auto;
+}
+
+.current-data-temp {
+  grid-area: temp;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-data-actual {
+  font-size: xx-large;
+  margin-bottom: 0;
+}
+
+.current-data-feels {
+  grid-area: feels;
+}
+
+.current-data-sun {
+  grid-area: sunrise;
+}
+
+.current-data-sun-img {
+  height: 13rem;
+}
+
+.current-data-wind {
+  grid-area: wind;
+  align-self: center;
+}
+
+.hr-gradient {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(83, 83, 83, 0.35),
+    rgba(0, 0, 0, 0)
+  );
 }

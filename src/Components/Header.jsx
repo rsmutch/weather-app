@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({ clearWeatherData }) => {
   return (
     <header>
       <div className="top-buffer" />
-      <h1>weather</h1>
+      <h1 onClick={clearWeatherData}>weather</h1>
     </header>
   );
 };

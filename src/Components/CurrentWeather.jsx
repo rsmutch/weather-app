@@ -1,4 +1,7 @@
 import React from 'react';
+import { ReactSVG } from 'react-svg';
+import Sunrise from '../assets/sunrise.svg';
+import Sunset from '../assets/sunset.svg';
 
 const CurrentWeather = ({ currentData }) => {
   if (Object.keys(currentData).length === 0) {
@@ -17,20 +20,30 @@ const CurrentWeather = ({ currentData }) => {
     windSpeed
   } = currentData;
   return (
-    <div>
-      <h1>{date}</h1>
-      <h1>
+    <div className="current-data-container">
+      <p className="current-data-date">{date}</p>
+      <p className="current-data-location">
         {city}, {country}
-      </h1>
+        <hr className="hr-gradient" />
+      </p>
       <img
+        className="current-data-icon"
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt={description}
       />
-      <h2>{temp}c</h2>
-      <h2>Feels like {feelsLike}c</h2>
-      <h3>Sunrise: {sunrise}</h3>
-      <h3>Sunset: {sunset}</h3>
-      <h3>Wind: {windSpeed}mph</h3>
+      <div className="current-data-temp">
+        <p className="current-data-actual">{temp}c</p>
+        <p className="current-data-feels">Feels like {feelsLike}c</p>
+      </div>
+      <div className="current-data-sun">
+        <div className="current-data-sunrise">
+          <p>Sunrise {sunrise}</p>
+        </div>
+        <div className="current-data-sunset">
+          <p>Sunset {sunset}</p>
+        </div>
+      </div>
+      <p className="current-data-wind">Wind {windSpeed}mph</p>
     </div>
   );
 };

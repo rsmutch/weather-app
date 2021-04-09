@@ -21,9 +21,14 @@ const App = () => {
       });
   };
 
+  const clearWeatherData = () => {
+    setCurrentData({});
+    setForecastData({});
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header clearWeatherData={clearWeatherData} />
       <SearchBar getWeather={getWeather} />
       <CurrentWeather currentData={currentData} />
       <Forecast forecastData={forecastData} />
