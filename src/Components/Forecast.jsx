@@ -5,7 +5,6 @@ const Forecast = ({ forecastData }) => {
   if (Object.keys(forecastData).length === 0) {
     return null;
   }
-  console.log(forecastData);
   return (
     <div className="forecast-container">
       <p className="forecast-title">

@@ -1,7 +1,9 @@
 import React from 'react';
+import SunriseImg from './assets/sunrise.png';
+import SunsetImg from './assets/sunset.png';
+import WindImg from './assets/windy.png';
 
 const ForecastCard = ({ day }) => {
-  console.log(day);
   const {
     date,
     description,
@@ -17,16 +19,26 @@ const ForecastCard = ({ day }) => {
       <div className="forecast-card-container">
         <h3 classname="forecast-card-date">{date}</h3>
         <div classname="forecast-card-temp">
-          <p>{temp}c</p> <p>feels {feelsLike}c</p>
+          <p>{temp}c</p>{' '}
+          <p className="forecast-card-feels">feels {feelsLike}c</p>
         </div>
         <img
           className="forecast-card-icon"
           src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
           alt={description}
         />
-        <p className="forecast-card-sunrise">Sunrise {sunrise}</p>
-        <p className="forecast-card-sunset">Sunset {sunset}</p>
-        <p className="forecast-card-wind">Wind {windSpeed}mph</p>
+        <div className="forecast-card-sunrise">
+          <img className="forecast-card-img-sun" src={SunriseImg} alt="" />
+          <p>{sunrise}</p>
+        </div>
+        <div className="forecast-card-sunset">
+          <img className="forecast-card-img-sun" src={SunsetImg} alt="" />
+          <p>{sunset}</p>
+        </div>
+        <div className="forecast-card-wind">
+          <img className="forecast-card-img-wind" src={WindImg} alt="" />
+          <p>{windSpeed}mph</p>
+        </div>
       </div>
 
       <hr className="hr-gradient" />

@@ -7,7 +7,7 @@
   font-family: 'Helvetica';
 }
 body {
-  background-image: url('./assets/bg.jpg');
+  background-image: url('./Components/assets/bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -42,6 +42,7 @@ header h1 {
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-bottom: 20px;
   width: 80vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -54,6 +55,7 @@ header h1 {
 
 .current-data-container * {
   color: var(--grey);
+  margin-bottom: 0;
 }
 
 .current-data-location {
@@ -71,7 +73,8 @@ header h1 {
 .current-data-icon {
   grid-area: icon;
   min-height: 11rem;
-  margin: 0 auto;
+  display: flex;
+  justify-self: center;
 }
 
 .current-data-temp {
@@ -95,13 +98,31 @@ header h1 {
   grid-area: sunrise;
 }
 
+.current-data-sunrise,
+.current-data-sunset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .current-data-sun-img {
-  height: 13rem;
+  height: 50px;
 }
 
 .current-data-wind {
   grid-area: wind;
-  align-self: center;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-data-wind p {
+  margin-top: 0;
+}
+
+.current-data-wind-img {
+  height: 50px;
 }
 
 .hr-gradient {
@@ -128,8 +149,12 @@ header h1 {
   display: grid;
   grid-template-areas:
     'date icon'
-    'temp sunrise'
-    'wind sunset';
+    'sunrise temp'
+    'sunset wind';
+}
+
+.forecast-card-feels {
+  visibility: hidden;
 }
 
 .forecast-container * {
@@ -141,7 +166,6 @@ header h1 {
 .forecast-title {
   grid-area: location;
   font-size: larger;
-  margin-bottom: 0;
   padding-top: 7px;
 }
 
@@ -153,18 +177,44 @@ header h1 {
   grid-area: temp;
 }
 
+.forecast-card-temp p {
+  margin-bottom: 0;
+}
+
 .forecast-card-icon {
   grid-area: icon;
   justify-self: center;
-  height: 80px;
+  height: 50px;
+}
+
+.forecast-card-img-sun {
+  height: 30px;
+}
+
+.forecast-card-img-wind {
+  height: 20px;
 }
 
 .forecast-card-sunrise {
   grid-area: sunrise;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecast-card-sunrise p {
+  margin-bottom: 0;
 }
 
 .forecast-card-sunset {
   grid-area: sunset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecast-card-sunset p {
+  margin-bottom: 0;
 }
 
 .forecast-card-wind {
@@ -207,5 +257,9 @@ header h1 {
 
   .forecast-title {
     font-size: 1.4rem;
+  }
+
+  .forecast-card-feels {
+    visibility: visible;
   }
 }

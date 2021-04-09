@@ -1,4 +1,7 @@
 import React from 'react';
+import SunriseImg from './assets/sunrise.png';
+import SunsetImg from './assets/sunset.png';
+import WindImg from './assets/windy.png';
 
 const CurrentWeather = ({ currentData }) => {
   if (Object.keys(currentData).length === 0) {
@@ -34,13 +37,18 @@ const CurrentWeather = ({ currentData }) => {
       </div>
       <div className="current-data-sun">
         <div className="current-data-sunrise">
-          <p>Sunrise {sunrise}</p>
+          <img className="current-data-sun-img" src={SunriseImg} alt="" />
+          <p> {sunrise}</p>
         </div>
         <div className="current-data-sunset">
-          <p>Sunset {sunset}</p>
+          <img className="current-data-sun-img" src={SunsetImg} alt="" />
+          <p> {sunset}</p>
         </div>
       </div>
-      <p className="current-data-wind">Wind {windSpeed}mph</p>
+      <div className="current-data-wind">
+        <p> {windSpeed} mph</p>
+        <img className="current-data-wind-img" src={WindImg} alt="" />
+      </div>
     </div>
   );
 };
