@@ -16,9 +16,9 @@ const ForecastCard = ({ day }) => {
     <>
       <div className="forecast-card-container">
         <h3 classname="forecast-card-date">{date}</h3>
-        <p classname="forecast-card-temp">
-          {temp}c but feels {feelsLike}c
-        </p>
+        <div classname="forecast-card-temp">
+          <p>{temp}c</p> <p>feels {feelsLike}c</p>
+        </div>
         <img
           className="forecast-card-icon"
           src={`https://openweathermap.org/img/wn/${icon}@2x.png`}

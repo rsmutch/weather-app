@@ -12,9 +12,11 @@ const Forecast = ({ forecastData }) => {
         Forecast
         <hr className="hr-gradient" />
       </p>
-      {forecastData.map((day) => {
-        return <ForecastCard day={day} />;
-      })}
+      <div className="forecast-cards">
+        {forecastData.map((day) => {
+          return <ForecastCard day={day} />;
+        })}
+      </div>
     </div>
   );
 };
